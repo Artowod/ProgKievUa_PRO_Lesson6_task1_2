@@ -238,32 +238,6 @@ public class OrdersDBManager {
         return true;
     }
 
-
-    public void getDataFromDBByParameters(String parameter, String value) {
-//        String str = "SELECT * FROM Apartments WHERE district='Podol'";
-
-        String queryOne = "SELECT * FROM Apartments WHERE district=?";
-        try (PreparedStatement statement = connection.prepareStatement(queryOne/*"SELECT * FROM " + TABLENAME + " WHERE ? =" + str2 +""*/)) {
-            //           statement.setString(1, parameter);
-            statement.setString(1, value);
-            if (parameter.equals("district") || parameter.equals("street")) {
-                statement.setString(1, value);
-            } else {
-                statement.setInt(1, Integer.getInteger(value));
-            }
-            ResultSet rs = statement.executeQuery();
-            if (!rs.next()) {
-                System.out.println("ResultSet is Empty !");
-            } else {
-                showResultSet(rs);
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println();
-    }
-
 //    CREATE TABLE `mysqlhometask2`.`new_table` (
 //      `idnew_table` INT NOT NULL AUTO_INCREMENT,
 //      `goods_id` INT NOT NULL,
